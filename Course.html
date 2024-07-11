@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edcademy</title>
+    <link rel = "icon" href = "logo.png" type = "image/jpeg">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel = "stylesheet" href = "main.css">
+    <link rel = "stylesheet" href = "responsive.css">
+    <link rel = "stylesheet" href = "utility.css">
+
+    <link rel = "stylesheet" href = "slick-1.8.1/slick/slick-theme.css">
+    <link rel = "stylesheet" href = "slick-1.8.1/slick/slick.css">
+
+    <style>
+        ::placeholder{
+            color:#333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container1 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            color:#333;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #courseList {color:#333;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #courseList li {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        #courseList li:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en"> 
+<body>
+    <header>
+        <div class = "header-top-info">
+            <div class = "row container">
+                <div>
+                    <p class = "text">Have any question?</p>
+                    <span><i class = "fas fa-phone"></i>123-1334-333</span>
+                    <span><i class = "fas fa-envelope"></i>info@edcademy.com</span>
+                </div>
+                <div>
+                    <button type = "button" class = "btn login-btn" href="login.html">Login</button>
+                    <button type = "button" class = "btn register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+
+        <nav class = "navbar">
+            <div class = "row container">
+                <a href = "index.html" class = "navbar-brand">
+                    <img src = "logo.png" alt = "site logo">
+                    <span>Edcademy</span>
+                </a>
+                <button type="button" class = "navbar-show-btn">
+                    <i class = "fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class = "navbar-collapse">
+                <button type = "button" class = "navbar-hide-btn">
+                    <i class = "fas fa-times"></i>
+                </button>
+                <ul class = "navbar-nav">
+                    <li><a href = "index.html">Home</a></li>
+                    <li><a href = "about.html">About</a></li>
+                    <li><a href = "course.html">Courses</a></li>
+                   
+                    <li><a href = "contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        
+    <div class="container1">
+        <h1>Course Catalog</h1>
+        <input type="text" id="searchInput" placeholder="Search for courses...">
+        <ul id="courseList">
+            <li style="background-color: #FFC0CB;">Course 1: Introduction to Programming</li>
+            <li style="background-color: #87CEFA;">Course 2: Web Development Basics</li>
+            <li style="background-color: #90EE90;">Course 3: Data Science Fundamentals</li>
+            <li style="background-color: #FFA07A;">Course 4: Introduction to Artificial Intelligence</li>
+            <li style="background-color: #FFD700;">Course 5: Advanced Web Development</li>
+            <li style="background-color: #ADD8E6;">Course 6: Machine Learning Basics</li>
+            <li style="background-color: #98FB98;">Course 7: Python Programming</li>
+            <li style="background-color: #FF6347;">Course 8: Full-Stack Development</li>
+            
+        </ul>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchInput");
+            const courseList = document.getElementById("courseList").getElementsByTagName("li");
+
+            searchInput.addEventListener("input", function() {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                Array.from(courseList).forEach(function(course) {
+                    const courseName = course.textContent.toLowerCase();
+                    if (courseName.includes(searchTerm)) {
+                        course.style.display = "block";
+                    } else {
+                        course.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
