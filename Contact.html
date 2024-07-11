@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Edcademy</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edcademy</title>
+    <link rel = "icon" href = "logo.png" type = "image/jpeg">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- custom css -->
+    <link rel = "stylesheet" href = "main.css">
+    <link rel = "stylesheet" href = "responsive.css">
+    <link rel = "stylesheet" href = "utility.css">
+
+    <!-- slick css -->
+    <link rel = "stylesheet" href = "slick-1.8.1/slick/slick-theme.css">
+    <link rel = "stylesheet" href = "slick-1.8.1/slick/slick.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container1 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    color: #333;
+    margin-top: 20px;
+}
+
+label,
+input,
+textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    color: black;
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class = "header-top-info">
+            <div class = "row container">
+                <div>
+                    <p class = "text">Have any question?</p>
+                    <span><i class = "fas fa-phone"></i>123-1334-333</span>
+                    <span><i class = "fas fa-envelope"></i>info@edcademy.com</span>
+                </div>
+                <div>
+                    <button type = "button" class = "btn login-btn" href="login.html">Login</button>
+                    <button type = "button" class = "btn register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+
+        <nav class = "navbar">
+            <div class = "row container">
+                <a href = "index.html" class = "navbar-brand">
+                    <img src = "logo.png" alt = "site logo">
+                    <span>Edcademy</span>
+                </a>
+                <button type="button" class = "navbar-show-btn">
+                    <i class = "fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class = "navbar-collapse">
+                <button type = "button" class = "navbar-hide-btn">
+                    <i class = "fas fa-times"></i>
+                </button>
+                <ul class = "navbar-nav">
+                    <li><a href = "index.html">Home</a></li>
+                    <li><a href = "about.html">About</a></li>
+                    <li><a href = "course.html">Courses</a></li>
+                    <li><a href = "contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+   
+    <div class="container1">
+        <h1>Contact Us</h1>
+        <p style="color:#333;">If you have any questions or feedback, please feel free to contact us using the form below:</p>
+        <form action="submit_contact.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+    <footer>
+        <p style="color:white;">&copy; 2024 Nimisha Aditi Manasa. All rights reserved.</p>
+    </footer>
+</body>
+</html>
