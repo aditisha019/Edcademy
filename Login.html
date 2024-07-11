@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login Form</title>
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.mi
+n.css"
+/>
+<style>
+body {
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+'Lucida Sans', Arial, sans-serif, sans-serif;
+margin: 0;
+padding: 0;
+background-image: url("5a4bb603-27b0-43cb-92f4-b2396c2bd189.jpg");
+background-size: cover;
+background-color: none;
+}
+.container {
+width: 500px;
+margin: 50px auto;
+padding: 20px;
+background-color: #fff;
+border-radius: 5px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+background-color:none;
+height:500px;
+}
+h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+label {
+display: block;margin-bottom: 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+width: 100%;
+padding: 8px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 3px;
+box-sizing: border-box;
+}
+button {
+background-color: #007bff;
+color: #fff;
+cursor: pointer;
+}
+button:hover {
+background-color: #0056b3;
+}
+.message {
+text-align: center;
+margin-top: 10px;
+color: #007bff;
+}
+#homeButton {
+position: fixed; /* Position the button fixed to the viewport */
+bottom: 10px; /* 10px from the bottom */
+right: 35%; /* 10px from the right */
+padding: 10px 20px;
+background-color: #010305;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+height:30px;
+width:30%;
+}
+#homeButton:hover {
+background-color: #2c3e52;animation: pulse 1s infinite;
+}
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+100% {
+transform: scale(1);
+}
+}
+</style>
+<script
+src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2 class="text-center">Login Form</h2>
+<form id="loginForm" class="row g-3">
+<div class="col-12">
+<label for="username" class="form-label">Username:</label>
+<input
+type="text"
+id="username"
+name="username"
+class="form-control"
+required
+/>
+</div>
+<div class="col-12">
+<label for="email" class="form-label">Email:</label>
+<input
+type="email"
+id="email"
+name="email"
+class="form-control"
+required
+/>
+</div>
+<div class="col-12">
+<label for="password" class="form-label">Password:</label>
+<input
+type="password"
+id="password"name="password"
+class="form-control"
+required
+/>
+</div>
+<div class="col-12">
+<button type="submit" class="btn btn-primary" id="login">
+Login
+</button>
+<a href="../final.html"><button class="btn btn-success
+animate__animated animate__bounce" id="homeButton">Home</button></a>
+</div>
+<div id="message" class="message col-12"></div>
+</form>
+</div>
+<script>
+const login = async () => {
+document.addEventListener("DOMContentLoaded", function () {
+document
+.getElementById("loginForm")
+.addEventListener("submit", function (event) {
+event.preventDefault(); // Prevent default form submission
+var username = document.getElementById("username").value;
+var email = document.getElementById("email").value;
+var password = document.getElementById("password").value;
+// Simple validation (you can add more complex validation as
+needed)
+if (!username || !email || !password) {
+document.getElementById("message").textContent =
+"Please fill in all fields";
+return;
+}
+axios
+.post("http://localhost:3000/auth/login", {
+username,
+email,
+password,
+})
+.then((response) => {
+//alert(response.data);
+window.location.href = "./activity.html";
+//alert("Feedback Saved");
+})
+.catch((error) => {
+console.error("Error:", error);//window.location.href = "./activity.html";
+alert("login failed");
+});
+});
+});
+};
+const loginButton = document.getElementById("login");
+loginButton.addEventListener("click", login());
+</script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min
+.js"></script>
+</body>
+</html>
