@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registration Form</title>
+<link
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.m
+in.css"
+rel="stylesheet"
+/>
+<script
+src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+body {
+font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+"Lucida Sans", Arial, sans-serif, sans-serif;
+background-color: none;
+margin: 0;
+padding: 0;
+background-image: url("d5c7ea17-56d2-43b5-9ce5-e74bc9653791.jpg");
+background-size: cover;
+background-position: center;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.container {
+max-width: 700px;
+margin: 10px auto;
+padding: 10px;
+background-color: none;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-color: black;
+font-size: xx-large;
+}
+h1 {
+text-align: center;
+color: yellow;
+}
+  .form-group {
+margin-bottom: 20px;
+}
+label {
+display: block;
+font-weight: bold;
+margin-bottom: 5px;
+color: yellow;
+font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+"Lucida Sans", Arial, sans-serif, sans-serif;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+.error-message {
+color: white;
+font-size: 14px;
+margin-top: 5px;
+}
+button {
+display: block;
+width: 100%;
+padding: 10px;
+margin-top: 20px;
+background-color: #ffb300;
+color: yellow;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+button:hover {
+background-color: #0056b3;
+}
+#homeButton {
+  position: fixed; /* Position the button fixed to the viewport */
+bottom: 10px; /* 10px from the bottom */
+right: 35%; /* 10px from the right */
+padding: 10px 20px;
+background-color: #010305;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+height:30px;
+width:30%;
+}
+#homeButton:hover {
+background-color: #2c3e52;
+animation: pulse 1s infinite;
+}
+@keyframes pulse {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+100% {
+transform: scale(1);
+}
+}
+</style>
+</head>
+<body>
+<div class="container mt-5">
+<h1 class="text-center mb-4">Welcome To SkyCast Weather</h1>
+<div class="row justify-content-center">
+<div class="col-md-6">
+<form id="registrationForm" action="/addname" method="post">
+<div class="form-group">
+<label for="name">Name:</label>
+<input
+type="text"
+class="form-control"
+id="name"
+name="name"
+autocomplete="off"
+/>
+<div class="error-message" id="nameError"></div>
+</div>
+<div class="form-group">
+<label for="email">Email:</label>
+<input
+type="email"
+class="form-control"
+id="email"
+name="email"
+autocomplete="off"
+/>
+<div class="error-message" id="emailError"></div>
+</div>
+<div class="form-group">
+<label for="password">Password:</label>
+<input
+type="password"
+class="form-control"
+id="password"
+name="password"
+autocomplete="off"
+/>
+<div class="error-message" id="passwordError"></div>
+</div>
+<div class="form-group">
+<label for="confirmPassword">Confirm Password:</label>
+<input
+type="password"
+class="form-control"
+id="confirmPassword"
+name="confirmPassword"
+autocomplete="off"
+/>
+<div class="error-message" id="confirmPasswordError"></div>
+</div>
+<button
+type="submit"
+class="btn btn-primary btn-block"
+id="submitBtn"
+value="Submit"
+>
+Submit
+</button>
+<button
+type="button"
+class="btn btn-secondary btn-block mt-3"
+id="clearBtn">
+Clear
+</button>
+<a href="../final.html"><button class="btn btn-success
+animate__animated animate__bounce" id="homeButton">Home</button></a>
+</form>
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"><
+/script>
+<script>
+$(document).ready(function () {
+$("#registrationForm").submit(function (event) {
+event.preventDefault();
+$(".error-message").text("");
+var isValid = true;
+var name = $("#name").val().trim();
+if (!name) {
+$("#nameError").text("Name is required.");
+isValid = false;
+}
+var email = $("#email").val().trim();
+var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!email) {
+$("#emailError").text("Email is required.");
+isValid = false;
+} else if (!emailPattern.test(email)) {
+$("#emailError").text("Invalid email address.");
+isValid = false;
+}
+var password = $("#password").val().trim();
+if (!password) {
+$("#passwordError").text("Password is required.");
+isValid = false;
+} else if (password.length < 8) {
+$("#passwordError").text("Password must be at least 8 characters long."
+);
+isValid = false;
+} else if (!/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+$("#passwordError").text(
+"Password must contain at least one digit and one letter."
+);
+isValid = false;
+}
+var confirmPassword = $("#confirmPassword").val().trim();
+if (!confirmPassword) {
+$("#confirmPasswordError").text("Please confirm your password.");
+isValid = false;
+} else if (confirmPassword !== password) {
+$("#confirmPasswordError").text("Passwords do not match.");
+isValid = false;
+}
+if (isValid) {
+axios
+.post("http://localhost:3000/auth/register", {
+name,
+email,
+password,
+confirmPassword,
+})
+.then((response) => {
+//alert(response.data);
+window.location.href = "./activity.html";
+//alert("Feedback Saved");
+})
+.catch((error) => {
+console.error("Error:", error);
+//window.location.href = "./activity.html";
+alert("Signup failed");
+});
+}
+});
+$("#clearBtn").click(function () {
+$("#registrationForm")[0].reset();
+$(".error-message").text("");
+});
+});
+</script>
+</body>
+</html>
